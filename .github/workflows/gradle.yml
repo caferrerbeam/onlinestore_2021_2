@@ -17,6 +17,7 @@ jobs:
           image: postgres:13
           env:
              POSTGRES_PASSWORD: postgres
+             POSTGRES_DB: test
              POSTGRES_USER: postgres
           ports:
              - 5432:5432
@@ -34,3 +35,9 @@ jobs:
           run: ./gradlew build
         - name: Style check and tests
           run: ./gradlew check --stacktrace
+          env:
+            DB_USER: postgres
+            DB_PASSWORD: postgres
+            DB_NAME: test
+            JPA_DDL: validate
+            VALIDATE_DB: true
