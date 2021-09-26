@@ -33,6 +33,12 @@ jobs:
           run: chmod +x gradlew
         - name: Build
           run: ./gradlew build --scan
+          env:
+            DB_USER: postgres
+            DB_PASSWORD: postgres
+            DB_NAME: test
+            JPA_DDL: validate
+            VALIDATE_DB: true
         - name: Style check and tests
           run: ./gradlew check --scan
           env:
