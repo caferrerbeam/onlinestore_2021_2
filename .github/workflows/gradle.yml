@@ -32,18 +32,6 @@ jobs:
         - name: Grant execute permission for gradlew
           run: chmod +x gradlew
         - name: Build
-          run: ./gradlew build --scan
-          env:
-            DB_USER: postgres
-            DB_PASSWORD: postgres
-            DB_NAME: test
-            JPA_DDL: validate
-            VALIDATE_DB: true
+          run: DB_NAME=test DB_PASSWORD=postgres DB_USER=postgres JPA_DDL=validate VALIDATE_DB=true  ./gradlew build --scan
         - name: Style check and tests
-          run: ./gradlew check --scan
-          env:
-            DB_USER: postgres
-            DB_PASSWORD: postgres
-            DB_NAME: test
-            JPA_DDL: validate
-            VALIDATE_DB: true
+          run: DB_NAME=test DB_PASSWORD=postgres DB_USER=postgres JPA_DDL=validate VALIDATE_DB=true ./gradlew check --scan
