@@ -34,7 +34,7 @@ jobs:
         - name: Build
           run: ./gradlew build
         - name: Style check and tests
-          run: ./gradlew check --stacktrace
+          run: ./gradlew check --scan
           env:
             DB_USER: postgres
             DB_PASSWORD: postgres
